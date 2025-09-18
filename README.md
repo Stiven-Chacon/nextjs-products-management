@@ -38,29 +38,30 @@ Una aplicación web moderna y profesional para la gestión de productos, constru
 ### Pasos para ejecutar el proyecto
 
 1. **Clonar el repositorio**
-\`\`\`bash
+```bash
 git clone https://github.com/Stiven-Chacon/nextjs-products-management
+
 cd nextjs-products-management
-\`\`\`
+```
 
 2. **Instalar dependencias**
-\`\`\`bash
+```bash
 npm install
 # o
 yarn install
-\`\`\`
+```
 
 3. **Ejecutar en modo desarrollo**
-\`\`\`bash
+```bash
 npm run dev
 # o
 yarn dev
-\`\`\`
+```
 
 4. **Abrir en el navegador**
-\`\`\`
+```bash
 http://localhost:3000
-\`\`\`
+```
 
 
 ## 🎨 Diseño y UX
