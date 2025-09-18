@@ -9,7 +9,7 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#1f2937",
+      main: "#0d47a1",
       contrastText: "#ffffff",
     },
     secondary: {
