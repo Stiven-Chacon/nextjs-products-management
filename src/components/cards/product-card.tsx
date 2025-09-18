@@ -2,7 +2,7 @@
 
 import { Card, CardContent, Typography, Chip, Box, IconButton } from "@mui/material"
 import { Edit, Delete } from "@mui/icons-material"
-import { Product } from "@/lib/mock-data"
+import { Product } from "@/lib/products/products.types"
 
 interface ProductCardProps {
   product: Product

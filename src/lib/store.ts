@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import productsReducer from "@/lib/mock-data"
+import productsReducer from "@/lib/products/products.slice"
 
 export const store = configureStore({
   reducer: {

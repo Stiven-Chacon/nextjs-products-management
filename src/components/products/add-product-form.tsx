@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material"
 import { useAppDispatch } from "@/lib/hooks"
-import { addProduct } from "@/lib/mock-data"
+import { addProduct } from "@/lib/products/products.slice"
 
 interface AddProductFormProps {
   open: boolean

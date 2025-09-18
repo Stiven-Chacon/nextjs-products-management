@@ -2,7 +2,7 @@
 import { Box, TextField, FormControl, InputLabel, Select, MenuItem, InputAdornment } from "@mui/material"
 import { Search } from "@mui/icons-material"
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
-import { setSearchTerm, setSelectedCategory } from "@/lib/mock-data"
+import { setSearchTerm, setSelectedCategory } from "@/lib/products/products.slice"
 
 const categories = ["Todas", "Electrónicos", "Audio", "Muebles", "Hogar", "Deportes"]
 
