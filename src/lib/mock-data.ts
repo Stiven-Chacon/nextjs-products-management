@@ -135,6 +135,15 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    addProduct: (state, action: PayloadAction<Omit<Product, "id">>) => {
+      const newProduct: Product = {
+        ...action.payload,
+        id: Date.now().toString(),
+      }
+      state.products.push(newProduct)
+      productsSlice.caseReducers.filterProducts(state)
+    },
+
     filterProducts: (state) => {
       let filtered = state.products
 
@@ -155,4 +164,5 @@ const productsSlice = createSlice({
   },
 })
 
+export const { addProduct} = productsSlice.actions
 export default productsSlice.reducer
