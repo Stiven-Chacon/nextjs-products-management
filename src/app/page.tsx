@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/layout/header"
 import { AddProductForm } from "@/components/products/add-product-form"
+import { ProductFilters } from "@/components/products/product-filters"
 import { ProductsGrid } from "@/components/products/products-grid"
 import { useAppSelector } from "@/lib/hooks"
 import { Product } from "@/lib/mock-data"
@@ -10,17 +11,16 @@ import { Container, Box, Button, Typography } from "@mui/material"
 import { useState } from "react"
 
 export default function Home() {
-    const [isAddFormOpen, setIsAddFormOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false)
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false)
 
   const { filteredProducts } = useAppSelector((state) => state.products)
+
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       <Header />
 
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
         <Box sx={{ mb: 4 }}>
           <Box
             sx={{
@@ -58,13 +58,14 @@ export default function Home() {
             </Button>
           </Box>
 
+          <ProductFilters />
+
         </Box>
 
         <ProductsGrid />
       </Container>
 
       <AddProductForm open={isAddFormOpen} onClose={() => setIsAddFormOpen(false)} />
-
     </Box>
   )
 }
