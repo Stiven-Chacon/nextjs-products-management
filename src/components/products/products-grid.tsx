@@ -18,7 +18,7 @@ import { useAppSelector } from "@/lib/hooks"
 import { ProductCard } from "../cards/product-card"
 
 
-const PRODUCTS_PER_PAGE = 10
+const PRODUCTS_PER_PAGE = 12
 
 export function ProductsGrid() {
   const { filteredProducts, } = useAppSelector((state) => state.products)
