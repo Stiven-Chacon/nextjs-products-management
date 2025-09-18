@@ -142,6 +142,10 @@ const productsSlice = createSlice({
       }
       state.products.push(newProduct)
       productsSlice.caseReducers.filterProducts(state)
+    },    
+    deleteProduct: (state, action: PayloadAction<string>) => {
+      state.products = state.products.filter((product) => product.id !== action.payload)
+      productsSlice.caseReducers.filterProducts(state)
     },
     setSelectedCategory: (state, action: PayloadAction<string>) => {
       state.selectedCategory = action.payload
@@ -171,5 +175,5 @@ const productsSlice = createSlice({
   },
 })
 
-export const { addProduct, setSelectedCategory, setSearchTerm } = productsSlice.actions
+export const { addProduct, deleteProduct, setSelectedCategory, setSearchTerm } = productsSlice.actions
 export default productsSlice.reducer
