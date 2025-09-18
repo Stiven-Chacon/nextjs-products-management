@@ -16,8 +16,8 @@ export function ProductCard({ product, onEdit, onDelete }: ProductCardProps) {
   return (
     <Card
       sx={{
-        height: 340, 
-        width: "100%", 
+        height: "auto", 
+        width: 300, 
         maxWidth: 300,
         minWidth: 280,
         display: "flex",

@@ -49,9 +49,9 @@ export function ProductsGrid() {
       </Box>
 
       {/* Grid de productos */}
-      <Grid container spacing={3} sx={{ mb: 4 }}>
+      <Grid container spacing={3} sx={{mb: 4, width: "100%", mx: 0,  display: "flex", justifyContent: "space-between", alignItems: "center"  }}>
         {currentProducts.map((product) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={product.id} sx={{ display: "flex" }}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={product.id} sx={{ display: "flex",  justifyContent: { xs: "center", sm: "flex-start" } }}>
             <ProductCard product={product} />
           </Grid>
         ))}
