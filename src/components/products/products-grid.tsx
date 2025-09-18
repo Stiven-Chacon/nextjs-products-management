@@ -16,17 +16,19 @@ import {
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import { ProductCard } from "../cards/product-card"
-import { deleteProduct } from "@/lib/mock-data"
+import { EditProductModal } from "./edit-product-modal"
+import { Product } from "@/lib/products/products.types"
+import { deleteProduct, updateProduct } from "@/lib/products/products.slice"
 
 
 const PRODUCTS_PER_PAGE = 12
 
 export function ProductsGrid() {
-  const dispatch = useAppDispatch()
-
   const { filteredProducts, selectedCategory, searchTerm } = useAppSelector((state) => state.products)
-
+  const dispatch = useAppDispatch()
   const [currentPage, setCurrentPage] = useState(1)
+
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [deletingProductId, setDeletingProductId] = useState<string | null>(null)
 
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
@@ -38,6 +40,16 @@ export function ProductsGrid() {
     setCurrentPage(value)
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
+
+  const handleEdit = (product: Product) => {
+    setEditingProduct(product)
+  }
+
+  const handleSaveEdit = (updatedProduct: Product) => {
+    dispatch(updateProduct(updatedProduct))
+    setEditingProduct(null)
+  }
+
 
   const handleDelete = (productId: string) => {
     setDeletingProductId(productId)
@@ -80,10 +92,10 @@ export function ProductsGrid() {
           </Box>
 
           {/* Grid de productos */}
-          <Grid container spacing={3} sx={{ mb: 4, width: "100%", mx: 0, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Grid container spacing={3} sx={{ mb: 4, width: "100%", mx: 0, display: "flex", alignItems: "center" }}>
             {currentProducts.map((product) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={product.id} sx={{ display: "flex", justifyContent: { xs: "center", sm: "flex-start" } }}>
-                <ProductCard product={product}  onDelete={handleDelete}/>
+                <ProductCard product={product} onEdit={handleEdit} onDelete={handleDelete} />
               </Grid>
             ))}
           </Grid>
@@ -117,6 +129,12 @@ export function ProductsGrid() {
             </Stack>
           )}
 
+          <EditProductModal
+            open={!!editingProduct}
+            product={editingProduct}
+            onClose={() => setEditingProduct(null)}
+            onSave={handleSaveEdit}
+          />
 
           <Dialog open={!!deletingProductId} onClose={() => setDeletingProductId(null)} maxWidth="sm">
             <DialogTitle>Confirmar Eliminación</DialogTitle>
