@@ -143,7 +143,14 @@ const productsSlice = createSlice({
       state.products.push(newProduct)
       productsSlice.caseReducers.filterProducts(state)
     },
-
+    setSelectedCategory: (state, action: PayloadAction<string>) => {
+      state.selectedCategory = action.payload
+      productsSlice.caseReducers.filterProducts(state)
+    },
+    setSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload
+      productsSlice.caseReducers.filterProducts(state)
+    },
     filterProducts: (state) => {
       let filtered = state.products
 
@@ -164,5 +171,5 @@ const productsSlice = createSlice({
   },
 })
 
-export const { addProduct} = productsSlice.actions
+export const { addProduct, setSelectedCategory, setSearchTerm } = productsSlice.actions
 export default productsSlice.reducer
